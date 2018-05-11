@@ -1,0 +1,14 @@
+#第一个案例，显示一张图片
+#第一步导入库
+import cv2
+#第二步加载图片
+img=cv2.imread("E:\pystudy\opencv_face\lena.jpg")
+#第三步创建窗口显示
+cv2.namedWindow("lena女神")
+#第四步显示图片
+cv2.imshow("lena女神",img)
+#第五步 暂停窗口,必须暂停，不暂停则窗口立即消失
+#暂停让程序继续运行
+cv2.waitKey(0)
+#第六步 关闭窗口，释放资源
+cv2.destroyAllWindows()
