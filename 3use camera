@@ -1,0 +1,19 @@
+#第三个案例，调用摄像头
+#第一步导入库
+import cv2
+#第二步 打开摄像头
+capture = cv2.VideoCapture (0)
+#第三步 获取摄像头实时画面
+cv2.namedWindow("camera")
+while True:
+    #1读取摄像头一帧画面，即获取一张图片
+    ret,frame = capture.read()
+    #2显示图片
+    cv2.imshow("camera",frame)
+    #3暂停窗口，按“q”退出
+    if cv2.waitKey(5) & 0xFF == ord("q"):
+        break
+#第四步 释放资源
+capture.release()
+#第五步 关闭窗口
+cv2.destroyAllWindows()
