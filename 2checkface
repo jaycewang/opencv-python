@@ -1,0 +1,30 @@
+#第二个案例，检测图片中的人脸
+#第一步导入库
+import cv2
+#第二步加载图片
+img = cv2.imread("E:\pystudy\opencv_face\people.jpg")
+#第三步 加载人脸模型
+face = cv2.CascadeClassifier("F:\python\Lib\site-packages\cv2\data\haarcascade_frontalface_alt.xml")
+#第四步图片灰度（原理：彩色图片内存大于灰度图片）
+gray = cv2.cvtColor(img,cv2.COLOR_RGB2GRAY)
+#第五步 检测人脸,返回人脸在图片中的坐标
+# 这个坐标是人脸的坐标,左上角坐标
+faces = face.detectMultiScale(gray)
+#第六步  标记人脸（采用简单的图案标记人脸，圆形，三角形，方形均可）
+#绘制图案，覆盖在头像上
+for (x, y, w, h) in faces:
+    #参数一：标记图片
+    #参数二：人脸左上角坐标
+    #参数三：人脸大小（右下角坐标）
+    #参数四：标记的图案颜色
+    #参数五：图片边线宽度
+    cv2.rectangle(img,(x,y),(x + w, y + h),(0, 255, 0), 10)
+
+#第七步：创建窗口
+cv2.namedWindow("people")
+#第八步：显示图片
+cv2.imshow("people",img)
+#第九步：暂停窗口
+cv2.waitKey(0)
+#第十步 关闭窗口
+cv2.destroyAllWindows()
